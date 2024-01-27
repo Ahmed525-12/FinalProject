@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{0DCEB05B-F9DA-4DB0-A9F4-97BC8A75D4E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{0DCEB05B-F9DA-4DB0-A9F4-97BC8A75D4E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThriftinessCore", "ThriftinessCore\ThriftinessCore.csproj", "{2D520625-059E-4061-AB51-3A4A12C637C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThriftinessRepository", "ThriftinessRepository\ThriftinessRepository.csproj", "{6016763E-48F0-4716-9CA1-748B38D70182}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThriftinessRepository", "ThriftinessRepository\ThriftinessRepository.csproj", "{6016763E-48F0-4716-9CA1-748B38D70182}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThriftinessService", "ThriftinessService\ThriftinessService.csproj", "{AFB642F9-FE42-45EA-9982-59072A67F575}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThriftinessService", "ThriftinessService\ThriftinessService.csproj", "{AFB642F9-FE42-45EA-9982-59072A67F575}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThriftinessCore", "ThriftinessCore\ThriftinessCore.csproj", "{D7B72F68-F834-4437-9212-D48B8FA99DBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		{0DCEB05B-F9DA-4DB0-A9F4-97BC8A75D4E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DCEB05B-F9DA-4DB0-A9F4-97BC8A75D4E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DCEB05B-F9DA-4DB0-A9F4-97BC8A75D4E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D520625-059E-4061-AB51-3A4A12C637C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D520625-059E-4061-AB51-3A4A12C637C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D520625-059E-4061-AB51-3A4A12C637C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D520625-059E-4061-AB51-3A4A12C637C9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6016763E-48F0-4716-9CA1-748B38D70182}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6016763E-48F0-4716-9CA1-748B38D70182}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6016763E-48F0-4716-9CA1-748B38D70182}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{AFB642F9-FE42-45EA-9982-59072A67F575}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFB642F9-FE42-45EA-9982-59072A67F575}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFB642F9-FE42-45EA-9982-59072A67F575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7B72F68-F834-4437-9212-D48B8FA99DBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7B72F68-F834-4437-9212-D48B8FA99DBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7B72F68-F834-4437-9212-D48B8FA99DBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7B72F68-F834-4437-9212-D48B8FA99DBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
