@@ -1,0 +1,46 @@
+﻿@using WebApplication1.ViewModel
+@model LoginVM
+
+@{
+    ViewData["Title"] = "LogIn";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="main-agileinfo">
+	<div class="agileits-top">
+
+		<form asp-action="LogIn">
+
+			<label asp-for="Email"></label>
+
+			<input class="text email" asp-for="Email" placeholder="Email">
+			<span asp-validation-for="Email"></span>
+			<br />
+			<label asp-for="Password"></label>
+
+			<input class="text" asp-for="Password" placeholder="Password">
+			<span asp-validation-for="Password"></span>
+			<br />
+
+
+
+
+			<div class="wthree-text">
+				<label class="anim">
+					<input asp-for="RemeberMe" class="checkbox">
+					<span asp-validation-for="RemeberMe"></span>
+
+					<span>I Agree To The Terms & Conditions</span>
+				</label>
+				<div class="clear"> </div>
+			</div>
+			<input type="submit" value="LogIn">
+		</form>
+		<p>Do not have an Account? <a asp-action="Register"> Sign Up !</a></p>
+
+		<p> <a asp-action="ForgetPassword"> Forget Password</a></p>
+
+	</div>
+</div>

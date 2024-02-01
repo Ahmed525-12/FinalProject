@@ -1,0 +1,51 @@
+﻿@using WebApplication1.ViewModel
+@model RegisterVM
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<h1>Register</h1>
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="main-agileinfo">
+	<div class="agileits-top">
+
+		<form asp-action="Register">
+			<label asp-for="DisplayName"></label>
+			<input class="text" asp-for="DisplayName" placeholder="Username">
+			<span asp-validation-for="DisplayName"></span>
+			
+			<br />
+			<label asp-for="Email"></label>
+
+			<input class="text email" asp-for="Email" placeholder="Email">
+			<span asp-validation-for="Email"></span>
+			<br />
+			<label asp-for="Password"></label>
+
+			<input class="text" asp-for="Password" placeholder="Password">
+			<span asp-validation-for="Password"></span>
+			<br />
+
+			<label asp-for="ConfirmPassword"></label>
+
+			<input class="text w3lpass" asp-for="ConfirmPassword" placeholder="Confirm Password">
+			<span asp-validation-for="ConfirmPassword"></span>
+			<br />
+
+
+			<div class="wthree-text">
+				<label class="anim">
+					<input asp-for="isAgree" class="checkbox">
+					<span asp-validation-for="isAgree"></span>
+
+					<span>I Agree To The Terms & Conditions</span>
+				</label>
+				<div class="clear"> </div>
+			</div>
+			<input type="submit" value="SIGNUP">
+		</form>
+		<p>Do you have an Account? <a asp-action="LogIn"> Login Now!</a></p>
+	</div>
+</div>
+

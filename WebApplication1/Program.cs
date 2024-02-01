@@ -1,6 +1,9 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using Talabat.PL.Extensions;
 using ThriftinessRepository.AppIdentity;
 using ThriftinessRepository.Contexts;
+using TODO.Extensions;
 
 namespace WebApplication1
 {
@@ -20,6 +23,13 @@ namespace WebApplication1
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("AppIdentityConnection"));
             });
+            builder.Services.AddIdentityServices(builder.Configuration);
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.LogoutPath = "Auth/LogIn";
+                options.AccessDeniedPath = "Home/Error";
+            });
+            builder.Services.AddAplicationServices();
 
             var app = builder.Build();
 
@@ -40,7 +50,7 @@ namespace WebApplication1
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Auth}/{action=Login}/{id?}");
 
             app.Run();
         }
