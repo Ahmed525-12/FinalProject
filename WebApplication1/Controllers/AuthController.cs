@@ -73,7 +73,7 @@ namespace WebApplication1.Controllers
 
                     if (flag)
                     {
-                        var Result = await _signInManager.PasswordSignInAsync(User, logInVM.Password, logInVM.RemeberMe, false);
+                        var Result = await _signInManager.PasswordSignInAsync(User, logInVM.Password, true, false);
 
                         if (Result.Succeeded)
                         {
