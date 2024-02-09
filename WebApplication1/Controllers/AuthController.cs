@@ -85,9 +85,19 @@ namespace WebApplication1.Controllers
 					claim.OriginalIssuer,
 					claim.Type,
 					claim.Value
-				}
-				);
+				}).ToList();
 
+			var User = new AppUser()
+			{
+				UserName = clamis.ElementAt(4).Value.Split("@")[1],
+				Email = clamis.ElementAt(4).Value,
+				DisplayName = clamis.ElementAt(4).Value.Split("@")[0],
+			};
+			var createuser = await _userManager.CreateAsync(User);
+			if (createuser.Succeeded)
+			{
+				return RedirectToAction("Index", "Home");
+			}
 			return RedirectToAction("Index", "Home");
 		}
 
@@ -199,6 +209,7 @@ namespace WebApplication1.Controllers
 		public new async Task<IActionResult> SignOut()
 		{
 			await _signInManager.SignOutAsync();
+
 			return RedirectToAction(nameof(LogIn));
 		}
 	}
