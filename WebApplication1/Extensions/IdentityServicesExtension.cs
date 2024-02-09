@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using ThriftinessCore.Entites.Identity;
@@ -16,6 +17,18 @@ namespace Talabat.PL.Extensions
 							.AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
 			Services.Configure<MailSettings>(_configuration.GetSection("MailSettings"));
 			Services.AddTransient<IEmailSettings, EmailSettings>();
+			Services.AddAuthentication(o =>
+			{
+				o.DefaultAuthenticateScheme = GoogleDefaults.AuthenticationScheme;
+				o.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+			}).AddGoogle(
+				o =>
+				{
+					IConfiguration googleAuthNSection = _configuration.GetSection("Authentication:Google");
+					o.ClientId = googleAuthNSection["ClientId"];
+					o.ClientSecret = googleAuthNSection["ClientSecret"];
+				}
+				);
 			return Services;
 		}
 	}
