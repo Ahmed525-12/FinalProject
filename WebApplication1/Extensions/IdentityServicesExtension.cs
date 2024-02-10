@@ -21,8 +21,6 @@ namespace Talabat.PL.Extensions
 			Services.AddTransient<IEmailSettings, EmailSettings>();
 			Services.AddAuthentication(o =>
 			{
-				o.DefaultAuthenticateScheme = GoogleDefaults.AuthenticationScheme;
-				o.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
 			}).AddGoogle(
 				o =>
 				{
@@ -30,8 +28,8 @@ namespace Talabat.PL.Extensions
 					o.ClientId = googleAuthNSection["ClientId"];
 					o.ClientSecret = googleAuthNSection["ClientSecret"];
 				}
-				);
 
+				);
 			return Services;
 		}
 	}
