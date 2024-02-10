@@ -93,7 +93,10 @@ namespace WebApplication1.Controllers
 				Email = clamis.ElementAt(4).Value,
 				DisplayName = clamis.ElementAt(4).Value.Split("@")[0],
 			};
+			var CheckUser = await _userManager.FindByEmailAsync(User.Email);
+			if (CheckUser != null) return RedirectToAction("Index", "Home");
 			var createuser = await _userManager.CreateAsync(User);
+
 			if (createuser.Succeeded)
 			{
 				return RedirectToAction("Index", "Home");
