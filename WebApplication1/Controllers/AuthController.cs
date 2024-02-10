@@ -100,6 +100,7 @@ namespace WebApplication1.Controllers
 			}
 
 			var Flag = await _userManager.AddLoginAsync(User, new UserLoginInfo("Google", result.Principal.FindFirstValue(ClaimTypes.NameIdentifier), "Google"));
+
 			if (Flag.Succeeded)
 			{
 				return RedirectToAction("Index", "Home");
