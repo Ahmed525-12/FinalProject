@@ -28,7 +28,15 @@ namespace WebApplication1
 			{
 				options.LogoutPath = "/Auth/LogIn";
 				options.AccessDeniedPath = "/Home/Error";
-			});
+			}).AddGoogle(
+				o =>
+				{
+					IConfiguration googleAuthNSection = builder.Configuration.GetSection("Authentication:Google");
+					o.ClientId = googleAuthNSection["ClientId"];
+					o.ClientSecret = googleAuthNSection["ClientSecret"];
+				}
+
+				);
 			builder.Services.AddAplicationServices();
 
 			var app = builder.Build();

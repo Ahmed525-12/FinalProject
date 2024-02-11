@@ -19,17 +19,7 @@ namespace Talabat.PL.Extensions
 							.AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
 			Services.Configure<MailSettings>(_configuration.GetSection("MailSettings"));
 			Services.AddTransient<IEmailSettings, EmailSettings>();
-			Services.AddAuthentication(o =>
-			{
-			}).AddGoogle(
-				o =>
-				{
-					IConfiguration googleAuthNSection = _configuration.GetSection("Authentication:Google");
-					o.ClientId = googleAuthNSection["ClientId"];
-					o.ClientSecret = googleAuthNSection["ClientSecret"];
-				}
 
-				);
 			return Services;
 		}
 	}

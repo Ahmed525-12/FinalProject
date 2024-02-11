@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -99,12 +100,8 @@ namespace WebApplication1.Controllers
 				var createuser = await _userManager.CreateAsync(User);
 			}
 
-			var Flag = await _userManager.AddLoginAsync(User, new UserLoginInfo("Google", result.Principal.FindFirstValue(ClaimTypes.NameIdentifier), "Google"));
+			await _signInManager.SignInAsync(User, true, "Google");
 
-			if (Flag.Succeeded)
-			{
-				return RedirectToAction("Index", "Home");
-			}
 			return RedirectToAction("Index", "Home");
 		}
 
@@ -129,6 +126,7 @@ namespace WebApplication1.Controllers
 					}
 					else
 					{
+						ModelState.AddModelError(string.Empty, "password Not Found");
 					}
 				}
 				else
@@ -215,6 +213,8 @@ namespace WebApplication1.Controllers
 
 		public new async Task<IActionResult> SignOut()
 		{
+			await HttpContext.SignOutAsync(
+	   CookieAuthenticationDefaults.AuthenticationScheme);
 			await _signInManager.SignOutAsync();
 
 			return RedirectToAction(nameof(LogIn));
