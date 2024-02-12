@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography;
 using AutoMapper;
+using ThriftinessCore.Entites;
 using ThriftinessCore.Entites.Identity;
 using WebApplication1.ViewModel;
 
@@ -10,6 +11,7 @@ namespace Talabat.PL.Helper
         public MappingProfiles()
         {
             CreateMap<AppUser, UserVM>().ReverseMap();
+            CreateMap<MonthOfExpense, MonthOfExpenseVM>().ReverseMap();
         }
     }
 }
