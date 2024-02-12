@@ -4,17 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ThriftinessCore.Entites;
+using ThriftinessCore.Specfictions;
 
 namespace ThriftinessCore.Repos
 {
-    public interface IGenricRepo<T> where T : BaseEntity
-    {
-        Task<T> GetbyIdAsync(int id);
+	public interface IGenricRepo<T> where T : BaseEntity
+	{
+		Task<T> GetbyIdAsync(int id);
 
-        Task AddAsync(T item);
+		Task<IReadOnlyList<T>> GetAllWithSpecAsync(ISpecfiction<T> Spec);
 
-        void DeleteAsync(T item);
+		Task AddAsync(T item);
 
-        void Update(T item);
-    }
+		void DeleteAsync(T item);
+
+		void Update(T item);
+	}
 }
