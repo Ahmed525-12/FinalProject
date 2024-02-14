@@ -32,9 +32,9 @@ namespace WebApplication1.Controllers
             var monthOfExpense = await _unitOfWork.Repository<MonthOfExpense>().GetAllWithSpecAsync(specmonth);
             await _unitOfWork.CompleteAsync();
 
-            var mapperEmployee = _mapper.Map<IEnumerable<MonthOfExpense>, IEnumerable<MonthOfExpenseVM>>(monthOfExpense);
+            var mappedResults = _mapper.Map<IEnumerable<MonthOfExpenseVM>>(monthOfExpense);
 
-            return View(mapperEmployee);
+            return View(mappedResults);
         }
     }
 }

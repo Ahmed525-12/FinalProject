@@ -7,61 +7,61 @@ using TODO.Extensions;
 
 namespace WebApplication1
 {
-	public class Program
-	{
-		public static void Main(string[] args)
-		{
-			var builder = WebApplication.CreateBuilder(args);
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
 
-			// Add services to the container.
-			builder.Services.AddControllersWithViews();
-			builder.Services.AddDbContext<ThriftinessContext>(options =>
-			{
-				options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-			});
-			builder.Services.AddDbContext<AppIdentityDbContext>(options =>
-			{
-				options.UseSqlServer(builder.Configuration.GetConnectionString("AppIdentityConnection"));
-			});
-			builder.Services.AddIdentityServices(builder.Configuration);
-			builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
-			{
-				options.LogoutPath = "/Auth/LogIn";
-				options.AccessDeniedPath = "/Home/Error";
-			}).AddGoogle(
-				o =>
-				{
-					IConfiguration googleAuthNSection = builder.Configuration.GetSection("Authentication:Google");
-					o.ClientId = googleAuthNSection["ClientId"];
-					o.ClientSecret = googleAuthNSection["ClientSecret"];
-				}
+            // Add services to the container.
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddAplicationServices();
+            builder.Services.AddDbContext<ThriftinessContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
+            builder.Services.AddDbContext<AppIdentityDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("AppIdentityConnection"));
+            });
+            builder.Services.AddIdentityServices(builder.Configuration);
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.LogoutPath = "/Auth/LogIn";
+                options.AccessDeniedPath = "/Home/Error";
+            }).AddGoogle(
+                o =>
+                {
+                    IConfiguration googleAuthNSection = builder.Configuration.GetSection("Authentication:Google");
+                    o.ClientId = googleAuthNSection["ClientId"];
+                    o.ClientSecret = googleAuthNSection["ClientSecret"];
+                }
 
-				);
-			builder.Services.AddAplicationServices();
+                );
 
-			var app = builder.Build();
+            var app = builder.Build();
 
-			// Configure the HTTP request pipeline.
-			if (!app.Environment.IsDevelopment())
-			{
-				app.UseExceptionHandler("/Home/Error");
-				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-				app.UseHsts();
-			}
+            // Configure the HTTP request pipeline.
+            if (!app.Environment.IsDevelopment())
+            {
+                app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
 
-			app.UseHttpsRedirection();
-			app.UseStaticFiles();
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
-			app.UseRouting();
-			app.UseAuthentication();
+            app.UseRouting();
+            app.UseAuthentication();
 
-			app.UseAuthorization();
+            app.UseAuthorization();
 
-			app.MapControllerRoute(
-				name: "default",
-				pattern: "{controller=Auth}/{action=Login}/{id?}");
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Auth}/{action=Login}/{id?}");
 
-			app.Run();
-		}
-	}
+            app.Run();
+        }
+    }
 }
