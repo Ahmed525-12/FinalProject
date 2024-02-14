@@ -12,6 +12,7 @@ namespace Talabat.PL.Helper
         {
             CreateMap<AppUser, UserVM>().ReverseMap();
             CreateMap<MonthOfExpense, MonthOfExpenseVM>().ReverseMap();
+            CreateMap<IEnumerable<MonthOfExpense>, IEnumerable<MonthOfExpenseVM>>().ReverseMap();
         }
     }
 }
