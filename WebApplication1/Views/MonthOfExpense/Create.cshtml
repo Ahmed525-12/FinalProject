@@ -1,0 +1,17 @@
+﻿@using WebApplication1.ViewModel
+@model MonthOfExpenseVM
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Createe" enctype="multipart/form-data">
+
+  
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a type="button" class="btn btn-outline-info" asp-action="Index">Back To List</a>
+
+</form>
+
+<h1>Create</h1>

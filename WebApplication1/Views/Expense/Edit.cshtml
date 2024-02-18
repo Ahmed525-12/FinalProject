@@ -1,0 +1,40 @@
+﻿@using WebApplication1.ViewModel
+@model ExpenseVM
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <input asp-for="UserId" hidden class="form-control">
+    <input asp-for="MonthOfExpenseId" hidden class="form-control">
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control">
+        <span class="form-text text-danger" asp-validation-for="Title"></span>
+    </div>
+    <div class="form-group form-check">
+
+        <input type="checkbox" class="form-check-input" asp-for="Priority">
+        <label asp-for="Priority"></label>
+        <span class="form-text text-danger" asp-validation-for="Priority"></span>
+
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <div class="form-group">
+        <label asp-for="AmountMoney"></label>
+        <input asp-for="AmountMoney" class="form-control">
+        <span class="form-text text-danger" asp-validation-for="AmountMoney"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Edit </button>
+    <a type="button" class="btn btn-outline-info" asp-action="Index">Back To List</a>
+
+</form>
+
+
+<h1>Edit</h1>
+

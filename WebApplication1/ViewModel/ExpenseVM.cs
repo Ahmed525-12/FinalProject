@@ -5,6 +5,7 @@ namespace WebApplication1.ViewModel
 {
     public class ExpenseVM
     {
+        public int Id { get; set; }
         public int AmountMoney { get; set; }
         public bool Priority { get; set; }
         public string Title { get; set; }

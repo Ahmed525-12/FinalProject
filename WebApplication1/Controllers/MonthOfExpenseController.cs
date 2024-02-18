@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -10,6 +11,7 @@ using WebApplication1.ViewModel;
 
 namespace WebApplication1.Controllers
 {
+    [Authorize]
     public class MonthOfExpenseController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -35,6 +37,34 @@ namespace WebApplication1.Controllers
             var mappedResults = _mapper.Map<IEnumerable<MonthOfExpenseVM>>(monthOfExpense);
 
             return View(mappedResults);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Createe()
+        {
+            try
+            {
+                var userEmail = User.FindFirstValue(ClaimTypes.Email);
+                var user = await _userManager.FindByEmailAsync(userEmail);
+                var monthOfExpense = new MonthOfExpense()
+                {
+                    numOfMonth = DateTime.Today.Month,
+                    User_Id = user.Id,
+                    TotalAmountMoney = 0,
+                };
+                await _unitOfWork.Repository<MonthOfExpense>().AddAsync(monthOfExpense);
+                await _unitOfWork.CompleteAsync();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                return View();
+            }
         }
     }
 }
