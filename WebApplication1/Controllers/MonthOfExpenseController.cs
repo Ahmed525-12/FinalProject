@@ -66,5 +66,17 @@ namespace WebApplication1.Controllers
                 return View();
             }
         }
+
+        public async Task<IActionResult> DetailsExpenss(int? id)
+        {
+            if (id == null)
+                return BadRequest();
+            var specmonth = new ExpenseSpecfMonth(id);
+            var monthOfExpense = await _unitOfWork.Repository<Expense>().GetAllWithSpecAsync(specmonth);
+            await _unitOfWork.CompleteAsync();
+
+            var mappedResults = _mapper.Map<IEnumerable<ExpenseVM>>(monthOfExpense);
+            return View(mappedResults);
+        }
     }
 }

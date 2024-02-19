@@ -7,9 +7,9 @@ using ThriftinessCore.Entites;
 
 namespace ThriftinessCore.Specfictions
 {
-    public class ExpenseSpecf : BaseSpecfiction<Expense>
+    public class ExpenseSpecfUser : BaseSpecfiction<Expense>
     {
-        public ExpenseSpecf(string userId) : base(p => p.UserId == userId)
+        public ExpenseSpecfUser(string userId) : base(p => p.UserId == userId)
         {
         }
     }

@@ -1,0 +1,55 @@
+﻿@using WebApplication1.ViewModel
+@model IEnumerable<ExpenseVM>
+@{
+    ViewData["Title"] = "DetailsExpenss";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.Count() > 0)
+{
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(D => D.Title)</th>
+                <th scope="col">@Html.DisplayNameFor(D => D.AmountMoney)</th>
+                <th scope="col">@Html.DisplayNameFor(D => D.Priority)</th>
+                <th scope="col">@Html.DisplayNameFor(D => D.ExpenseDate)</th>
+
+
+
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Expense in Model)
+            {
+                <tr>
+                    <th scope="row">@Expense.Title</th>
+                    <th scope="row">@Expense.AmountMoney</th>
+                    <th scope="row">@Expense.Priority</th>
+                    <th scope="row">@Expense.ExpenseDate</th>
+
+
+
+                    <td><a asp-controller="Expense" asp-action="Edit" asp-route-id="@Expense.Id"><i class="fas fa-edit"></i></a></td>
+                    <td><a asp-controller="Expense" asp-action="Delete" asp-route-id="@Expense.Id"><i class="fas fa-trash-alt text-danger"></i></a></td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        there is no Expense
+    </div>
+}
+
+<h1>DetailsExpenss</h1>
+

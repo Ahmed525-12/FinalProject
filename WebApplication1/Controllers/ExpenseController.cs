@@ -28,7 +28,7 @@ namespace WebApplication1.Controllers
         {
             var userEmail = User.FindFirstValue(ClaimTypes.Email);
             var user = await _userManager.FindByEmailAsync(userEmail);
-            var specmonth = new ExpenseSpecf(user.Id);
+            var specmonth = new ExpenseSpecfUser(user.Id);
 
             var monthOfExpense = await _unitOfWork.Repository<Expense>().GetAllWithSpecAsync(specmonth);
             await _unitOfWork.CompleteAsync();

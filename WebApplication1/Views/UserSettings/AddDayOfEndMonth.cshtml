@@ -1,0 +1,20 @@
+﻿@using WebApplication1.ViewModel
+@model UserSettingsVM
+@{
+    ViewData["Title"] = "AddDayOfEndMonth";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form asp-action="AddDayOfEndMonth" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="DayOfEndMonth"></label>
+        <input asp-for="DayOfEndMonth" class="form-control">
+        <span class="form-text text-danger" asp-validation-for="DayOfEndMonth"></span>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a type="button" class="btn btn-outline-info" asp-action="Index">Back To sittings</a>
+
+</form>
+<h1>AddDayOfEndMonth</h1>
+
