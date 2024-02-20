@@ -33,21 +33,21 @@ namespace WebApplication1.Controllers
 
             var monthOfExpense = await _unitOfWork.Repository<MonthOfExpense>().GetAllWithSpecAsync(specmonth);
             await _unitOfWork.CompleteAsync();
+            if (monthOfExpense.Count == 0 || DateTime.Today.Day == user.DayOfEndMonth)
+            {
+                await CreateMonthOfExpense();
+            }
 
             var mappedResults = _mapper.Map<IEnumerable<MonthOfExpenseVM>>(monthOfExpense);
 
             return View(mappedResults);
         }
 
-        public IActionResult Create()
+        private async Task CreateMonthOfExpense()
         {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Createe()
-        {
-            try
+            var checkMonth = new MonthOfExpenseSpecfNum(DateTime.Today.Month);
+            var checkMonthOfExpense = await _unitOfWork.Repository<MonthOfExpense>().GetAllWithSpecAsync(checkMonth);
+            if (checkMonthOfExpense.Count == 0)
             {
                 var userEmail = User.FindFirstValue(ClaimTypes.Email);
                 var user = await _userManager.FindByEmailAsync(userEmail);
@@ -57,13 +57,9 @@ namespace WebApplication1.Controllers
                     User_Id = user.Id,
                     TotalAmountMoney = 0,
                 };
+
                 await _unitOfWork.Repository<MonthOfExpense>().AddAsync(monthOfExpense);
                 await _unitOfWork.CompleteAsync();
-                return RedirectToAction("Index");
-            }
-            catch (Exception)
-            {
-                return View();
             }
         }
 
