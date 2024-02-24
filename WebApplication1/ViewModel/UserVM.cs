@@ -8,5 +8,9 @@ namespace WebApplication1.ViewModel
 
         [EmailAddress]
         public string Email { get; set; }
+
+        public int? MonthlySalary { get; set; }
+        public int? DayOfEndMonth { get; set; }
+        public int? TotalExpense { get; set; }
     }
 }
