@@ -79,6 +79,7 @@ namespace WebApplication1.Controllers
 
             var mappedResults = _mapper.Map<IEnumerable<ExpenseVM>>(monthOfExpense);
             return View(mappedResults);
+            //___________________________________ end of method ----------------------------------
         }
     }
 }
