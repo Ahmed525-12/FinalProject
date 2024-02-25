@@ -9,7 +9,7 @@ namespace ThriftinessCore.Specfictions
 {
     public class MonthOfExpenseSpecfNum : BaseSpecfiction<MonthOfExpense>
     {
-        public MonthOfExpenseSpecfNum(int numofmonth) : base(p => p.numOfMonth == numofmonth)
+        public MonthOfExpenseSpecfNum(int numofmonth, string userId) : base(p => (p.numOfMonth == numofmonth) && (p.User_Id == userId))
         {
         }
     }

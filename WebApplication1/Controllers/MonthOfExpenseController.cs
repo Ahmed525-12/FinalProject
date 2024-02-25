@@ -48,20 +48,20 @@ namespace WebApplication1.Controllers
 
         private async Task CreateMonthOfExpense()
         {
-            var checkMonth = new MonthOfExpenseSpecfNum(DateTime.Today.Month);
+            var userEmail = User.FindFirstValue(ClaimTypes.Email);
+            var user = await _userManager.FindByEmailAsync(userEmail);
+            var checkMonth = new MonthOfExpenseSpecfNum(DateTime.Today.Month, user.Id);
             var checkMonthOfExpense = await _unitOfWork.Repository<MonthOfExpense>().GetAllWithSpecAsync(checkMonth);
             if (checkMonthOfExpense.Count == 0)
             {
-                var userEmail = User.FindFirstValue(ClaimTypes.Email);
-                var user = await _userManager.FindByEmailAsync(userEmail);
-                var monthOfExpense = new MonthOfExpense()
+                var monthofExpense = new MonthOfExpense()
                 {
                     numOfMonth = DateTime.Today.Month,
                     User_Id = user.Id,
                     TotalAmountMoney = 0,
                 };
 
-                await _unitOfWork.Repository<MonthOfExpense>().AddAsync(monthOfExpense);
+                await _unitOfWork.Repository<MonthOfExpense>().AddAsync(monthofExpense);
                 await _unitOfWork.CompleteAsync();
             }
         }
