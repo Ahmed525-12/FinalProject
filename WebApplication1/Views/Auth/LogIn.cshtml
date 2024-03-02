@@ -7,57 +7,30 @@
 }
 
 
-<div asp-validation-summary="All" class="text-danger"></div>
-<div class="main-agileinfo">
-	<div class="agileits-top">
+<form class="login" asp-action="LogIn">
+    <h3 class="text-center head-auth">Login in Thriftiness</h3>
+    <input asp-for="Email" class="input-auth" placeholder="Email">
+    <span asp-validation-for="Email"></span>
+    <input asp-for="Password" class="input-auth" placeholder="Password">
+    <span asp-validation-for="Password"></span>
+    <div class="text-center">
 
-		<form asp-action="LogIn">
+        <button class="button-auth">Log in</button>
+    </div>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <a asp-action="ForgetPassword" class="a-auth"> Forgot password?</a>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <button asp-action="GoogleLogIn" class="login-with-google-btn">
+                    Google
+                </button>
+            </div>
+        </div>
 
-			<label asp-for="Email"></label>
-
-			<input class="text email" asp-for="Email" placeholder="Email">
-			<span asp-validation-for="Email"></span>
-			<br />
-			<label asp-for="Password"></label>
-
-			<input class="text" asp-for="Password" placeholder="Password">
-			<span asp-validation-for="Password"></span>
-			<br />
-
-
-
-
-			<div class="wthree-text">
-				<label class="anim">
-					<input asp-for="RemeberMe" class="checkbox">
-					<span asp-validation-for="RemeberMe"></span>
-
-					<span>I Agree To The Terms & Conditions</span>
-				</label>
-				<div class="clear"> </div>
-			</div>
-			<input type="submit" value="LogIn">
-		
- 
-		</form>
-		<form id="external-account" asp-action="GoogleLogIn" method="post" class="form-horizontal">
-			<div>
-				<p>
-
-					<button type="submit" class="btn btn-light btn-block" name="provider" value="Google" title="Log in using your Google account">
-
-						<img src="https://gfx4arab.com/wp-content/uploads/2020/06/google-icon.svg" alt="Google" style="height: 20px;" />
-						Login With Google
-					</button>
-
-				</p>
-			</div>
-		</form>
-		<p>Do not have an Account? <a asp-action="Register"> Sign Up !</a></p>
-
-		<p> <a asp-action="ForgetPassword"> Forget Password</a></p>
-
-		
-		
-	</div>
-</div>
+    </div>
+    <div class="container col-lg-12 col-md-12 col-sm-12 text-center">
+        <a asp-action="Register" class="a-auth"> Sign Up !</a>
+    </div>
+</form>

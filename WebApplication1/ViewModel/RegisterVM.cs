@@ -19,8 +19,5 @@ namespace WebApplication1.ViewModel
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "dosent match")]
         public string ConfirmPassword { get; set; }
-
-        [Required(ErrorMessage = "Agree is requird")]
-        public bool isAgree { get; set; }
     }
 }
