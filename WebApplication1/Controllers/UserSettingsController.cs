@@ -33,7 +33,7 @@ namespace WebApplication1.Controllers
             var user = await _userManager.FindByEmailAsync(userEmail);
             user.MonthlySalary = model.MonthlySalary;
             await _userManager.UpdateAsync(user);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index");
         }
 
         public IActionResult AddDayOfEndMonth()
@@ -48,7 +48,7 @@ namespace WebApplication1.Controllers
             var user = await _userManager.FindByEmailAsync(userEmail);
             user.DayOfEndMonth = model.DayOfEndMonth;
             await _userManager.UpdateAsync(user);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index");
         }
     }
 }

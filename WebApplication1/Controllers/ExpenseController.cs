@@ -62,6 +62,10 @@ namespace WebApplication1.Controllers
                     MonthOfExpenseId = checkMonthOfExpense.FirstOrDefault().Id
                 };
                 await _unitOfWork.Repository<Expense>().AddAsync(expense);
+                var month = await _unitOfWork.Repository<MonthOfExpense>().GetbyIdAsync(expense.MonthOfExpenseId);
+                month.TotalAmountMoney = month.TotalAmountMoney + model.AmountMoney;
+                _unitOfWork.Repository<MonthOfExpense>().Update(month);
+
                 await _unitOfWork.CompleteAsync();
                 return RedirectToAction("Index");
             }
