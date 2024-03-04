@@ -35,7 +35,7 @@ namespace WebApplication1.Controllers
 
             user.TotalExpense = user.MonthlySalary - monthOfExpense.Sum(o => o.TotalAmountMoney);
 
-            if (monthOfExpense.Count == 0 || DateTime.Today.Day == user.DayOfEndMonth)
+            if (DateTime.Today.Day == user.DayOfEndMonth)
             {
                 await CreateMonthOfExpense();
                 user.TotalExpense = user.TotalExpense + user.MonthlySalary;
