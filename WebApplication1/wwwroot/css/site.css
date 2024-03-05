@@ -1,18 +1,36 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
+
+.img-nav {
+    height: 70px;
+    width: auto;
+}
+
+.alink {
+    transition: color 0.4s linear, margin-left 0.3s linear !important;
+    color: #000000 !important;
+    text-decoration: none;
+}
+
+    .alink:hover {
+        color: #079467 !important;
+        margin-left: 5px !important;
+        text-decoration: underline;
+        transition: text-decoration 0.5s linear;
+    }
