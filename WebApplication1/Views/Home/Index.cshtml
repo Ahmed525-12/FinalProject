@@ -1,5 +1,5 @@
 ﻿@using WebApplication1.ViewModel
-@model UserVM
+@model CombinedHomeScreen
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -7,5 +7,46 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
 
-    <h2 asp-for="TotalExpense">@Model.TotalExpense</h2>
+    <h2 asp-for="TotalExpense">@Model.UserVM.TotalExpense</h2>
 </div>
+
+
+<!-- Display User information -->
+<h2>User Information</h2>
+<p>Email: @Model.UserVM.Email</p>
+<!-- Add other user properties as needed -->
+<!-- Display User information -->
+<h2>User Expense</h2>
+<p>Total Expense: @Model.UserVM.TotalExpense</p>
+
+<!-- Display Save Goals -->
+<h2>Save Goals</h2>
+@if (Model.SaveGoalVM.Any())
+{
+    <ul>
+        @foreach (var saveGoal in Model.SaveGoalVM)
+        {
+            <li>@saveGoal.TitleGoal - Target: @saveGoal.TargetAmount</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No save goals found.</p>
+}
+
+<!-- Display Month Of Expenses -->
+<h2>Month Of Expenses</h2>
+@if (Model.MonthOfExpenseVM.Any())
+{
+    <ul>
+        @foreach (var monthOfExpense in Model.MonthOfExpenseVM)
+        {
+            <li>@monthOfExpense.numOfMonth - Total spent: @monthOfExpense.TotalAmountMoney</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No month of expenses found.</p>
+}

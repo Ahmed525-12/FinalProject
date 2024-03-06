@@ -35,11 +35,6 @@ namespace WebApplication1.Controllers
 
             user.TotalExpense = user.MonthlySalary - monthOfExpense.Sum(o => o.TotalAmountMoney);
 
-            if (DateTime.Today.Day == user.DayOfEndMonth)
-            {
-                await CreateMonthOfExpense();
-                user.TotalExpense = user.TotalExpense + user.MonthlySalary;
-            }
             await _userManager.UpdateAsync(user);
             await _unitOfWork.CompleteAsync();
             var mappedResults = _mapper.Map<IEnumerable<MonthOfExpenseVM>>(monthOfExpense);
