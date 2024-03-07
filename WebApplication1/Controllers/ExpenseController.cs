@@ -24,16 +24,30 @@ namespace WebApplication1.Controllers
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchValue, bool? yourBooleanValue)
         {
             var userEmail = User.FindFirstValue(ClaimTypes.Email);
             var user = await _userManager.FindByEmailAsync(userEmail);
-            var specmonth = new ExpenseSpecfUser(user.Id);
+            IReadOnlyList<Expense> expenses;
+            if (yourBooleanValue.HasValue && yourBooleanValue.Value)
+            {
+                var checkPriority = new ExppenseSpecfPriorty(yourBooleanValue.Value, user.Id);
+                expenses = await _unitOfWork.Repository<Expense>().GetAllWithSpecAsync(checkPriority);
+            }
+            else if (!string.IsNullOrEmpty(searchValue))
+            {
+                var checkName = new ExppenseSpecfName(searchValue, user.Id);
+                expenses = await _unitOfWork.Repository<Expense>().GetAllWithSpecAsync(checkName);
+            }
+            else
+            {
+                var specUser = new ExpenseSpecfUser(user.Id);
+                expenses = await _unitOfWork.Repository<Expense>().GetAllWithSpecAsync(specUser);
+            }
 
-            var monthOfExpense = await _unitOfWork.Repository<Expense>().GetAllWithSpecAsync(specmonth);
             await _unitOfWork.CompleteAsync();
 
-            var mappedResults = _mapper.Map<IEnumerable<ExpenseVM>>(monthOfExpense);
+            var mappedResults = _mapper.Map<IEnumerable<ExpenseVM>>(expenses);
 
             return View(mappedResults);
         }

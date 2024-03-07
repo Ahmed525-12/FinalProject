@@ -5,10 +5,61 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 class="h1 p-4 ">ExpenseController</h1>
-<br />
+
 
 <a class="btn btn-success m-4" role="button" asp-action="Create">Create Expense</a>
+<br />
+<div class="border-section p-4">
+    <div class="py-5 text-center ">
+
+        <h4 class=" h4-skills text-center ">FILTERS </h4>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+            <form asp-action="Index" method="get" class="text-center">
+                <!-- Your other form elements -->
+
+                <input type="hidden" name="yourBooleanValue" id="yourBooleanValue" value="false" />
+
+                <button type="submit" class="btn btn-primary">Priority true</button>
+            </form>
+
+            <!-- Toggle the hidden input value using JavaScript -->
+            <script>
+                document.getElementById('yourBooleanValue').value = true;  // Set to true when the button is clicked
+            </script>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <form asp-action="Index" method="get" class="text-center">
+                <!-- Your other form elements -->
+
+                <input type="hidden" name="yourBooleanValue" id="BooleanValue" value="false" />
+
+                <button type="submit" class="btn btn-primary">Priority false</button>
+            </form>
+
+            <!-- Toggle the hidden input value using JavaScript -->
+            <script>
+                document.getElementById('BooleanValue').value = false;  // Set to true when the button is clicked
+            </script>
+
+
+        </div>
+    </div>
+  
+  
+    <br />
+    <form asp-action="Index">
+        <div class="input-group">
+            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="searchValue" />
+            <button type="submit" class="btn btn-outline-primary" value="search">search</button>
+        </div>
+    </form>
+
+
+</div>
+
 
 
 

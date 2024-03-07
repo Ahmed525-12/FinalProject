@@ -40,14 +40,16 @@ namespace WebApplication1.Controllers
                     Email = model.Email,
                     DisplayName = model.DisplayName,
                 };
-                var result = await _userManager.CreateAsync(User, model.Password);
-                if (result.Succeeded)
+                var Result = await _userManager.CreateAsync(User, model.Password);
+                await _signInManager.PasswordSignInAsync(User, model.Password, true, false);
+
+                if (Result.Succeeded)
                 {
-                    return RedirectToAction("LogIn");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    foreach (var error in result.Errors)
+                    foreach (var error in Result.Errors)
                     {
                         ModelState.AddModelError(string.Empty, error.Description);
                     }
