@@ -8,13 +8,11 @@
 <form class="login" asp-action="Register">
     <h3 class="text-center head-auth">Register in Thriftiness</h3>
     <input asp-for="DisplayName" class="input-auth" placeholder="Password">
-    <span asp-validation-for="DisplayName"></span>
+   
     <input asp-for="Email" class="input-auth" placeholder="Email">
-    <span asp-validation-for="Email"></span>
     <input asp-for="Password" class="input-auth" placeholder="Password">
-    <span asp-validation-for="Password"></span>
     <input asp-for="ConfirmPassword" class="input-auth" placeholder="Confirm Password">
-    <span asp-validation-for="ConfirmPassword"></span>
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div class="text-center">
 
         <button class="button-auth">Register</button>

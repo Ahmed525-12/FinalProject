@@ -29,7 +29,7 @@ namespace WebApplication1.Controllers
             var userEmail = User.FindFirstValue(ClaimTypes.Email);
             var user = await _userManager.FindByEmailAsync(userEmail);
             IReadOnlyList<Expense> expenses;
-            if (yourBooleanValue.HasValue && yourBooleanValue.Value)
+            if (yourBooleanValue != null)
             {
                 var checkPriority = new ExppenseSpecfPriorty(yourBooleanValue.Value, user.Id);
                 expenses = await _unitOfWork.Repository<Expense>().GetAllWithSpecAsync(checkPriority);
@@ -79,7 +79,10 @@ namespace WebApplication1.Controllers
                 var month = await _unitOfWork.Repository<MonthOfExpense>().GetbyIdAsync(expense.MonthOfExpenseId);
                 month.TotalAmountMoney = month.TotalAmountMoney + model.AmountMoney;
                 _unitOfWork.Repository<MonthOfExpense>().Update(month);
+                user.TotalExpense = user.MonthlySalary - expense.AmountMoney;
 
+                await _userManager.UpdateAsync(user);
+                await _unitOfWork.CompleteAsync();
                 await _unitOfWork.CompleteAsync();
                 return RedirectToAction("Index");
             }

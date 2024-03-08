@@ -17,6 +17,17 @@ body {
     margin-bottom: 60px;
 }
 
+.dir-navbar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media only screen and (max-width:768px) {
+    .dir-navbar {
+        justify-content: center;
+    }
+}
+
 .img-nav {
     height: 70px;
     width: auto;

@@ -10,9 +10,8 @@
 <form class="login" asp-action="LogIn">
     <h3 class="text-center head-auth">Login in Thriftiness</h3>
     <input asp-for="Email" class="input-auth" placeholder="Email">
-    <span asp-validation-for="Email"></span>
     <input asp-for="Password" class="input-auth" placeholder="Password">
-    <span asp-validation-for="Password"></span>
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div class="text-center">
 
         <button class="button-auth">Log in</button>
