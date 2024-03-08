@@ -16,8 +16,8 @@
 
     </div>
     <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 text-center">
-            <form asp-action="Index" method="get" class="text-center">
+        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+            <form asp-action="Index" method="get" class="text-center py-4">
                 <!-- Your other form elements -->
 
                 <input type="hidden" name="yourBooleanValue" id="yourBooleanValue" value="false" />
@@ -27,11 +27,11 @@
 
             <!-- Toggle the hidden input value using JavaScript -->
             <script>
-                document.getElementById('yourBooleanValue').value = false;  // Set to true when the button is clicked
+                document.getElementById('yourBooleanValue').value = true;  // Set to true when the button is clicked
             </script>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12">
-            <form asp-action="Index" method="get" class="text-center">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <form asp-action="Index" method="get" class="text-center py-4">
                 <!-- Your other form elements -->
 
                 <input type="hidden" name="yourBooleanValue" id="BooleanValue" value="false" />
@@ -41,10 +41,16 @@
 
             <!-- Toggle the hidden input value using JavaScript -->
             <script>
-                document.getElementById('BooleanValue').value = true;  // Set to true when the button is clicked
+                document.getElementById('BooleanValue').value = false;  // Set to true when the button is clicked
             </script>
 
 
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+
+            <form asp-action="Index" class="text-center py-4">
+                <button type="submit" class="btn btn-primary">Clear Filters</button>
+            </form>
         </div>
     </div>
   
@@ -65,6 +71,7 @@
 
 @if (Model.Count() > 0)
 {
+    <div class="col-lg-12col-md-12 col-sm-12">
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -100,7 +107,7 @@
         </tbody>
     </table>
 
-
+    </div>
 }
 else
 {
