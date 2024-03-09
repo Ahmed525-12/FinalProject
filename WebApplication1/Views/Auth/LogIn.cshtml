@@ -8,7 +8,7 @@
 
 
 <form class="login" asp-action="LogIn">
-    <h3 class="text-center head-auth">Login in Thriftiness</h3>
+    <h3 class="text-center head-auth animate__backInDown">Login in Thriftiness</h3>
     <input asp-for="Email" class="input-auth" placeholder="Email">
     <input asp-for="Password" class="input-auth" placeholder="Password">
     <div asp-validation-summary="All" class="text-danger"></div>
@@ -18,10 +18,10 @@
     </div>
     <div class="container py-5">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="col-lg-6 col-md-6 col-sm-6  dir-navbar">
                 <a asp-action="ForgetPassword" class="a-auth"> Forgot password?</a>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="col-lg-6 col-md-6 col-sm-6 dir-navbar">
                 <button asp-action="GoogleLogIn" class="login-with-google-btn">
                     Google
                 </button>
@@ -29,7 +29,12 @@
         </div>
 
     </div>
-    <div class="container col-lg-12 col-md-12 col-sm-12 text-center">
-        <a asp-action="Register" class="a-auth"> Sign Up !</a>
+    <div class="container col-lg-12 col-md-12 col-sm-12 text-center a-auth">
+        <h3>
+            Do not have an Account?
+          <span>
+                <a asp-action="Register" class="a-auth"> Sign Up !</a>
+          </span> 
+      </h3> 
     </div>
 </form>
