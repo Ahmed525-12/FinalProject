@@ -4,14 +4,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
 
+<a class="btn settings-btn " role="button" asp-action="AddMonthlySalary">Add Monthly Salary</a>
 <br />
 
-<a class="btn btn-success m-4" role="button" asp-action="AddMonthlySalary">AddMonthlySalary</a>
+<a class="btn settings-btn " role="button" asp-action="AddDayOfEndMonth">Add Day Of End Month</a>
 <br />
 
-<a class="btn btn-success m-4" role="button" asp-action="AddDayOfEndMonth">AddDayOfEndMonth</a>
-<br />
-
-<a class="btn btn-danger m-4" role="button" asp-controller="Auth" asp-action="SignOut">SignOut</a>
+<a class="btn settingsignout-btn" role="button" asp-controller="Auth" asp-action="SignOut">Sign Out</a>

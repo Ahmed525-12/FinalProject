@@ -76,3 +76,39 @@ body {
     border: 1px solid rgb(0, 0, 0);
     border-radius: 5px;
 }
+
+.settings-btn {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+    .settings-btn:hover {
+        background-color: #ddd;
+        color: black;
+        transition: background-color 0.5s linear;
+    }
+
+.settingsignout-btn {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #D04848;
+    color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+    .settingsignout-btn:hover {
+        background-color: #ddd;
+        color: black;
+        transition: background-color 0.5s linear;
+    }
