@@ -4,16 +4,74 @@
     ViewData["Title"] = "Home Page";
 }
 
+<div class="row pb-5">
+    <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+        <!-- Display User information -->
+       
+        <h3>Hello and Welcome @Model.UserVM.DisplayName</h3>
+        <!-- Add other user properties as needed -->
+    
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+        <!-- Display User information -->
+       
+        <h3> Your Total Expense: @Model.UserVM.TotalExpense</h3>
+
+    </div>
+
+</div>
+
+<hr />
+@if (Model.MonthOfExpenseVM.Any())
+{
+    <h3>Total Spent</h3>
+
+    <canvas id="myChart" width="400" height="300"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var labels = [];
+        var data = [];
+
+        @foreach (var monthOfExpense in Model.MonthOfExpenseVM)
+        {
+            @:labels.push('@monthOfExpense.numOfMonth');
+            @:data.push(@monthOfExpense.TotalAmountMoney);
+        }
+
+                        var ctx = document.getElementById('myChart').getContext('2d');
+
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Total Spent',
+                    data: data,
+                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+}
+else
+{
+    <p>No month of expenses found.</p>
+}
 
 
 
-<!-- Display User information -->
-<h2 class="animate__backInDown">User Information</h2>
-<p>Email: @Model.UserVM.Email</p>
-<!-- Add other user properties as needed -->
-<!-- Display User information -->
-<h2>User Expense</h2>
-<p>Total Expense: @Model.UserVM.TotalExpense</p>
+<br />
+<hr />
 
 <!-- Display Save Goals -->
 <h2>Save Goals</h2>
@@ -31,18 +89,5 @@ else
     <p>No save goals found.</p>
 }
 
-<!-- Display Month Of Expenses -->
-<h2>Month Of Expenses</h2>
-@if (Model.MonthOfExpenseVM.Any())
-{
-    <ul>
-        @foreach (var monthOfExpense in Model.MonthOfExpenseVM)
-        {
-            <li>@monthOfExpense.numOfMonth - Total spent: @monthOfExpense.TotalAmountMoney</li>
-        }
-    </ul>
-}
-else
-{
-    <p>No month of expenses found.</p>
-}
+
+
