@@ -44,7 +44,9 @@ namespace WebApplication1.Controllers
                 var specUser = new ExpenseSpecfUser(user.Id);
                 expenses = await _unitOfWork.Repository<Expense>().GetAllWithSpecAsync(specUser);
             }
+            user.TotalExpense = user.MonthlySalary - expenses.Sum(o => o.AmountMoney);
 
+            await _userManager.UpdateAsync(user);
             await _unitOfWork.CompleteAsync();
 
             var mappedResults = _mapper.Map<IEnumerable<ExpenseVM>>(expenses);
@@ -79,10 +81,7 @@ namespace WebApplication1.Controllers
                 var month = await _unitOfWork.Repository<MonthOfExpense>().GetbyIdAsync(expense.MonthOfExpenseId);
                 month.TotalAmountMoney = month.TotalAmountMoney + model.AmountMoney;
                 _unitOfWork.Repository<MonthOfExpense>().Update(month);
-                user.TotalExpense = user.MonthlySalary - expense.AmountMoney;
 
-                await _userManager.UpdateAsync(user);
-                await _unitOfWork.CompleteAsync();
                 await _unitOfWork.CompleteAsync();
                 return RedirectToAction("Index");
             }
