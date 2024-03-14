@@ -21,8 +21,7 @@
 
 </div>
 
-<hr />
-@if (Model.MonthOfExpenseVM.Any())
+<hr />@if (Model.MonthOfExpenseVM.Any())
 {
     <h3>Total Spent</h3>
 
@@ -39,7 +38,21 @@
             @:data.push(@monthOfExpense.TotalAmountMoney);
         }
 
-                        var ctx = document.getElementById('myChart').getContext('2d');
+            // Add TotalExpense to the dataset
+            labels.push('Total Expense');
+        data.push(@Model.UserVM.TotalExpense);
+
+        var backgroundColors = [
+            'rgba(75, 192, 192, 0.5)', // Default color for other bars
+            '#A5DD9B'   // Color for Total Expense bar
+        ];
+
+        var borderColor = [
+            'rgba(75, 192, 192, 1)', // Default border color for other bars
+            '#114232'   // Border color for Total Expense bar
+        ];
+
+        var ctx = document.getElementById('myChart').getContext('2d');
 
         var myChart = new Chart(ctx, {
             type: 'bar',
@@ -48,8 +61,8 @@
                 datasets: [{
                     label: 'Total Spent',
                     data: data,
-                    backgroundColor: 'rgba(75, 192, 192, 0.5)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: backgroundColors,
+                    borderColor: borderColor,
                     borderWidth: 1
                 }]
             },
@@ -67,6 +80,7 @@ else
 {
     <p>No month of expenses found.</p>
 }
+
 
 
 
