@@ -8,14 +8,14 @@
     <div class="col-lg-6 col-md-6 col-sm-12 text-center">
         <!-- Display User information -->
        
-        <h1>Hello and Welcome @Model.UserVM.DisplayName</h1>
+        <h1 class="head-auth">Hello and Welcome @Model.UserVM.DisplayName</h1>
         <!-- Add other user properties as needed -->
     
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 text-center">
         <!-- Display User information -->
        
-        <h1> your total expense :<span><h1>@Model.UserVM.TotalExpense</h1> </span></h1>
+        <h1 class="head-auth"> your total expense :<span><h1 class="head-auth">@Model.UserVM.TotalExpense</h1> </span></h1>
 
     </div>
 
@@ -34,7 +34,7 @@
         var calacprogress = progressPercentage * 100;
 
         <div class="mb-3">
-            <p>Goal: @saveGoal.TitleGoal</p>
+            <p class="head-auth">Goal: @saveGoal.TitleGoal</p>
 
 
             <div class="progress">
@@ -53,7 +53,7 @@ else
 <hr />
 @if (Model.MonthOfExpenseVM.Any())
 {
-    <h3>Total Spent</h3>
+    <h3 class="head-auth">Total Spent</h3>
 
     <canvas id="myChart" width="400" height="300"></canvas>
 
@@ -85,7 +85,7 @@ else
         var ctx = document.getElementById('myChart').getContext('2d');
 
         var myChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'polarArea',
             data: {
                 labels: labels,
                 datasets: [{
@@ -97,13 +97,31 @@ else
                 }]
             },
             options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+                onComplete: () => {
+                    delayed = true;
+                },
+                delay: (context) => {
+                    let delay = 0;
+                    if (context.type === 'data' && context.mode === 'default' && !delayed) {
+                        delay = context.dataIndex * 300 + context.datasetIndex * 100;
+                    }
+                    return delay;
+                },
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Chart.js Line Chart'
                     }
                 }
             }
-        });
+        }
+
+               
+        );
     </script>
 }
 else

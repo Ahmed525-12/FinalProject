@@ -33,6 +33,12 @@ body {
     }
 }
 
+.head-auth {
+    background: linear-gradient(#3a92c8, #51439d);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
 #loading-screen {
     position: fixed;
     top: 0;
