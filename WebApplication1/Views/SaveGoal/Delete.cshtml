@@ -8,13 +8,13 @@
 <form asp-action="Delete" enctype="multipart/form-data">
     <input asp-for="User_Id" hidden class="form-control">
    
-    <div class="form-group">
+    <div class="form-group pb-3">
         <label asp-for="TitleGoal"></label>
         <input asp-for="TitleGoal" class="form-control">
         <span class="form-text text-danger" asp-validation-for="TitleGoal"></span>
     </div>
     
-    <div class="form-group">
+    <div class="form-group pb-3">
         <label asp-for="TargetAmount"></label>
         <input asp-for="TargetAmount" class="form-control">
         <span class="form-text text-danger" asp-validation-for="TargetAmount"></span>

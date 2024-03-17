@@ -6,12 +6,12 @@
 }
 
 <form asp-action="Createe" enctype="multipart/form-data">
-    <div class="form-group">
+    <div class="form-group pb-3">
         <label asp-for="Title"></label>
         <input asp-for="Title" class="form-control">
         <span class="form-text text-danger" asp-validation-for="Title"></span>
     </div>
-    <div class="form-group form-check">
+    <div class="form-group form-check" pb-3>
         
         <input type="checkbox" class="form-check-input" asp-for="Priority">
         <label asp-for="Priority"></label>
@@ -19,15 +19,15 @@
 
     </div>
  
-    <div class="form-group">
+    <div class="form-group pb-3">
         <label asp-for="AmountMoney"></label>
         <input asp-for="AmountMoney" class="form-control">
         <span class="form-text text-danger" asp-validation-for="AmountMoney"></span>
     </div>
   
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-success">Submit</button>
     <a type="button" class="btn btn-outline-info" asp-action="Index">Back To List</a>
 
 </form>
 
-<h1>Create</h1>
+    

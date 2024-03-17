@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;1,500&display=swap");
+
 html {
     font-size: 14px;
 }
@@ -15,6 +17,9 @@ html {
 
 body {
     margin-bottom: 60px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: normal;
 }
 
 .dir-navbar {
@@ -225,4 +230,23 @@ body .vertical-centered-box {
     100% {
         opacity: 1;
     }
+}
+
+.progress-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    background: linear-gradient(to right, rgba(69, 144, 112, 0.858),rgba(69, 105, 144, 0.694)) !important;
+    -webkit-transition: background-color 300ms !important;
+    -moz-transition: background-color 300ms !important;
+    transition: background-color 300ms !important;
+    transition: width .6s ease;
+}
+
+.padding-fixed {
+    padding-top: 10pc;
 }
