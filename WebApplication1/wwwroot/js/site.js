@@ -54,5 +54,5 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("loading-screen").style.display = "none";
         // Show the content
         document.getElementById("content").style.display = "block";
-    }, 3000);
+    }, 1000);
 });

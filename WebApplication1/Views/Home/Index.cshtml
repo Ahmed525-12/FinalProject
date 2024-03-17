@@ -103,4 +103,31 @@ else
     <p>No save goals found.</p>
 }
 
+@if (Model.UserVM != null && Model.UserVM.TotalExpense.HasValue && Model.SaveGoalVM != null && Model.SaveGoalVM.Any())
+{
+    foreach (var saveGoal in Model.SaveGoalVM)
+    {
+        var totalExpense = Model.UserVM.TotalExpense;
+        var targetAmount = saveGoal.TargetAmount;
+
+@*         var progressPercentage = (totalExpense / targetAmount) * 100;
+ *@       
+        var progressPercentage = (totalExpense / targetAmount) * 100;
+        <div class="mb-3">
+            <p>Total Expense: @totalExpense</p>
+            <p>Target Amount: @targetAmount</p>
+
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: @progressPercentage%;" aria-valuenow="@progressPercentage" aria-valuemin="0" aria-valuemax="100">
+                    @progressPercentage%
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p>No save goals or data available for the progress bars.</p>
+}
+
 
