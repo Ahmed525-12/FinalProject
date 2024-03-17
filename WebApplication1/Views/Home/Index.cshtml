@@ -29,8 +29,7 @@
         int? totalExpense = Model.UserVM.TotalExpense;
         int targetAmount = saveGoal.TargetAmount;
 
-        @*         var progressPercentage = (totalExpense / targetAmount) * 100;
- *@
+  
         double progressPercentage = (double)totalExpense / targetAmount;
         var calacprogress = progressPercentage * 100;
 
