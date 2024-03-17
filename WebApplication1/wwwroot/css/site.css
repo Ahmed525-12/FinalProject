@@ -51,17 +51,58 @@ body {
 }
 
 .alink {
-    transition: color 0.4s linear, margin-left 0.3s linear !important;
-    color: #000000 !important;
+    position: relative;
+    display: block;
+    text-transform: uppercase;
+    margin: 20px 0;
+    padding: 10px 20px;
     text-decoration: none;
+    color: #262626;
+    transition: 0.5s;
+    z-index: 1;
 }
 
-    .alink:hover {
-        color: #079467 !important;
-        margin-left: 5px !important;
-        text-decoration: underline;
-        transition: text-decoration 0.5s linear;
+    .alink:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-top: 2px solid #0fb7ff;
+        border-bottom: 2px solid #0fb7ff;
+        transform: scaleY(2);
+        opacity: 0;
+        transition: 0.3s;
     }
+
+    .alink:after {
+        content: "";
+        position: absolute;
+        top: 2px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #0fb7ff;
+        transform: scale(0);
+        opacity: 0;
+        transition: 0.3s;
+        z-index: -1;
+    }
+
+    .alink:hover {
+        color: #fff !important;
+    }
+
+        .alink:hover:before {
+            transform: scaleY(1);
+            opacity: 1;
+        }
+
+        .alink:hover:after {
+            transform: scaleY(1);
+            opacity: 1;
+        }
 
 .h4-skills {
     position: relative;
