@@ -334,6 +334,11 @@ body {
     .dir-navbar {
         justify-content: center;
     }
+
+    .img-nav {
+        height: auto !important;
+        width: 80% !important;
+    }
 }
 
 .head-auth {
