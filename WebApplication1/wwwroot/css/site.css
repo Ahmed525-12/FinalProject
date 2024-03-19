@@ -1,17 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;1,500&display=swap");
 
-html {
-    font-size: 14px;
-}
-
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
+.text-color {
+    font-size: x-large;
+    color: white;
 }
 
 .main {
-    height: 100vh;
+    height: auto;
     background: linear-gradient(#00e7b5, #155fff);
     display: flex;
     flex-direction: column;
@@ -604,4 +599,9 @@ body .vertical-centered-box {
 
 .padding-fixed {
     padding-top: 10pc;
+}
+
+.progress {
+    font-size: 1rem !important;
+    height: 2rem !important;
 }

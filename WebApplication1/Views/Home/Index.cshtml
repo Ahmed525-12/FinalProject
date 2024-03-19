@@ -53,15 +53,15 @@
     <div class="row pb-5 padding-fixed">
     <div class="col-lg-6 col-md-6 col-sm-12 text-center">
         <!-- Display User information -->
-       
-        <h1 class="">Hello and Welcome @Model.UserVM.DisplayName</h1>
+
+            <h1 class="text-color">Hello and Welcome @Model.UserVM.DisplayName</h1>
         <!-- Add other user properties as needed -->
     
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 text-center">
         <!-- Display User information -->
-       
-        <h1 class=""> your total expense :<span><h1 class="">@Model.UserVM.TotalExpense</h1> </span></h1>
+
+            <h1 class="text-color "> your total expense :<span><h1 class="text-color ">@Model.UserVM.TotalExpense</h1> </span></h1>
 
     </div>
         </div>
@@ -85,7 +85,7 @@
         <div class="mb-3">
                 <div class="pb-3">
 
-            <p class="">Goal: @saveGoal.TitleGoal</p>
+                        <p class="text-color">Goal: @saveGoal.TitleGoal</p>
             </div>
 
 
@@ -100,14 +100,20 @@
 }
 else
 {
-    <p>No save goals or data available for the progress bars.</p>
+        <p class="text-color ">No save goals or data available for the progress bars.</p>
 }
 
 <br />
 <hr />@if (Model.MonthOfExpenseVM.Any())
 {
- 
-     <div class="container ">
+        <style>
+            #myChart {
+                background-color: white; /* Set canvas background color to white */
+                padding: 25px;
+                border-radius: 5px;
+            }
+        </style>
+     <div class="container pb-4">
     <canvas id="myChart" width="400" height="150"></canvas>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -167,7 +173,7 @@ else
 }
 else
 {
-    <p>No month of expenses found.</p>
+        <p class="text-color ">No month of expenses found.</p>
 }
 </div>
 
