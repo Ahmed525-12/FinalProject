@@ -10,6 +10,10 @@ html, body {
     padding: 0;
 }
 
+.min-header {
+    min-height: 90vh;
+}
+
 body {
     margin-bottom: 60px;
     font-family: "Poppins", sans-serif !important;
@@ -21,6 +25,14 @@ body {
     background-size: cover;
     overflow: auto;
     white-space: nowrap;
+}
+
+.footer {
+    position: relative !important;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
 }
 
 .dir-navbar {
