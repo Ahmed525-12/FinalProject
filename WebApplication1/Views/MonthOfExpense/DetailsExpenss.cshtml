@@ -9,7 +9,7 @@
 @if (Model.Count() > 0)
 {
     <table class="table">
-        <thead class="thead-dark">
+            <thead class="thead-dark head-auth">
             <tr>
                 <th scope="col">@Html.DisplayNameFor(D => D.Title)</th>
                 <th scope="col">@Html.DisplayNameFor(D => D.AmountMoney)</th>
@@ -27,7 +27,7 @@
         <tbody>
             @foreach (var Expense in Model)
             {
-                <tr>
+                    <tr class="text-color">
                     <th scope="row">@Expense.Title</th>
                     <th scope="row">@Expense.AmountMoney</th>
                     <th scope="row">@Expense.Priority</th>
@@ -35,7 +35,7 @@
 
 
 
-                    <td><a asp-controller="Expense" asp-action="Edit" asp-route-id="@Expense.Id"><i class="fas fa-edit"></i></a></td>
+                        <td><a asp-controller="Expense" asp-action="Edit" asp-route-id="@Expense.Id"><i class="fas fa-edit icon-color-sm"></i></a></td>
                     <td><a asp-controller="Expense" asp-action="Delete" asp-route-id="@Expense.Id"><i class="fas fa-trash-alt text-danger"></i></a></td>
 
                 </tr>

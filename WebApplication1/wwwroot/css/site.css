@@ -1,8 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;1,500&display=swap");
 
 .text-color {
+    font-size: large;
+    color: white;
+    text-align: center;
+}
+
+.bg-navbar {
+    background: #373B44; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4286f4, #373B44); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4286f4, #373B44); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.table-border {
+    border: 5px solid white;
+    border-radius: 6px;
+}
+
+.text-goal {
     font-size: x-large;
     color: white;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.text-label {
+    font-size: large;
+    color: white;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.icon-color-sm {
+    font-size: x-large;
+    color: darkblue;
 }
 
 html, body {
@@ -51,10 +80,15 @@ body {
     }
 }
 
+.a-auth {
+    color: #222831;
+}
+
 .head-auth {
-    background: linear-gradient(#3a92c8, #51439d);
-    -webkit-background-clip: text;
-    color: transparent;
+    color: #4CCD99;
+    text-shadow: 1px 1px 1px #000;
+    font-size: x-large;
+    text-align: center;
 }
 
 #loading-screen {
@@ -148,14 +182,14 @@ body {
         text-align: center;
         width: 100%;
         height: 3px;
-        background: rgb(106, 106, 106);
+        background: white;
         position: absolute;
         bottom: -20px;
         left: 0;
     }
 
 .border-section {
-    border: 1px solid rgb(0, 0, 0);
+    border: 4px solid white;
     border-radius: 5px;
 }
 

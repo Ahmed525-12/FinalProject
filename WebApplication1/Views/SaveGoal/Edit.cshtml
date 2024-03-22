@@ -10,19 +10,20 @@
 <form asp-action="Edit" enctype="multipart/form-data">
     <input asp-for="User_Id" hidden class="form-control">
    
-    <div class="form-group">
-        <label asp-for="TitleGoal"></label>
+    <div class="form-group pb-3">
+            <label asp-for="TitleGoal" class="text-label"></label>
         <input asp-for="TitleGoal" class="form-control">
         <span class="form-text text-danger" asp-validation-for="TitleGoal"></span>
     </div>
     
-    <div class="form-group">
-        <label asp-for="TargetAmount"></label>
+    <div class="form-group pb-3">
+            <label asp-for="TargetAmount" class="text-label"></label>
         <input asp-for="TargetAmount" class="form-control">
         <span class="form-text text-danger" asp-validation-for="TargetAmount"></span>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit Edit </button>
-    <a type="button" class="btn btn-outline-info" asp-action="Index">Back To List</a>
+    <button type="submit" class="btn btn-success">Submit Edit </button>
+        <a type="button" class="btn btn-outline-primary" asp-action="Index">Back To List</a>
 
 </form>
+</div>

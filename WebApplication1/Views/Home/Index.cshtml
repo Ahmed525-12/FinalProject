@@ -2,24 +2,27 @@
 @model CombinedHomeScreen
 @{
     ViewData["Title"] = "Home Page";
+    bool dataFound = Model.UserVM != null && Model.UserVM.TotalExpense.HasValue && Model.SaveGoalVM != null && Model.SaveGoalVM.Any() && Model.MonthOfExpenseVM.Any();
+
 }
 
 
-
+@if (dataFound)
+{
 
 
     <div class="row pb-5 padding-fixed">
     <div class="col-lg-6 col-md-6 col-sm-12 text-center">
         <!-- Display User information -->
 
-            <h1 class="text-color">Hello and Welcome @Model.UserVM.DisplayName</h1>
+        <h1 class="text-goal">Hello and Welcome @Model.UserVM.DisplayName</h1>
         <!-- Add other user properties as needed -->
     
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 text-center">
         <!-- Display User information -->
 
-            <h1 class="text-color "> your total expense :<span><h1 class="text-color ">@Model.UserVM.TotalExpense</h1> </span></h1>
+        <h1 class="text-goal"> your total expense :<span><h1 class="text-goal">@Model.UserVM.TotalExpense</h1> </span></h1>
 
     </div>
         </div>
@@ -39,7 +42,7 @@
         <div class="container">
             <div class="mb-3">
                 <div class="pb-3">
-                    <p class="text-color">Goal: @saveGoal.TitleGoal</p>
+                    <p class="text-goal">Goal: @saveGoal.TitleGoal</p>
                 </div>
                 <div class="progress">
                     @if (calacprogress >= 100)
@@ -136,7 +139,14 @@ else
 {
         <p class="text-color ">No month of expenses found.</p>
 }
+}
+else
+{
+    <div class="pb-5 padding-fixed text-center">
 
+    <p class="text-color">no data found please go the settings page and fill the data</p>
+    </div>
+}
 
 
 

@@ -20,27 +20,33 @@ body {
     align-items: center;
 }
 
-    .main:before, .main:after {
-        content: "";
-        display: block;
-        position: absolute;
-        z-index: -3;
-    }
+.head-auth {
+    background: linear-gradient(#3a92c8, #51439d);
+    -webkit-background-clip: text;
+    color: transparent;
+}
 
-    .main:before {
-        right: 0;
-        bottom: -19;
-        height: 30em;
-        width: 30em;
-        align-self: flex-end;
-    }
+.main:before, .main:after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -3;
+}
 
-    .main:after {
-        top: 0;
-        left: 30;
-        height: 10em;
-        width: 10em;
-    }
+.main:before {
+    right: 0;
+    bottom: -19;
+    height: 30em;
+    width: 30em;
+    align-self: flex-end;
+}
+
+.main:after {
+    top: 0;
+    left: 30;
+    height: 10em;
+    width: 10em;
+}
 
 .main__text-wrapper {
     position: relative;

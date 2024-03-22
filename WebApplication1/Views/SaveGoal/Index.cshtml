@@ -15,8 +15,8 @@
 
 @if (Model.Count() > 0)
 {
-    <table class="table">
-        <thead class="thead-dark">
+        <table class="table table-border">
+            <thead class="thead-dark head-auth table-border">
             <tr>
                 <th scope="col">@Html.DisplayNameFor(D => D.TitleGoal)</th>
                 <th scope="col">@Html.DisplayNameFor(D => D.TargetAmount)</th>
@@ -33,15 +33,15 @@
         <tbody>
             @foreach (var SaveGoal in Model)
             {
-            
-                <tr>
+
+                    <tr class="text-color">
                     <th scope="row">@SaveGoal.TitleGoal</th>
                     <th scope="row">@SaveGoal.TargetAmount</th>
 
 
 
 
-                    <td><a asp-action="Edit" asp-route-id="@SaveGoal.Id"><i class="fas fa-edit"></i></a></td>
+                        <td><a asp-action="Edit" asp-route-id="@SaveGoal.Id"><i class="fas fa-edit icon-color-sm"></i></a></td>
                     <td><a asp-action="Delete" asp-route-id="@SaveGoal.Id"><i class="fas fa-trash-alt text-danger"></i></a></td>
 
                 </tr>

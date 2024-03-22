@@ -9,21 +9,21 @@
 
 <form asp-action="Createe" enctype="multipart/form-data">
     <div class="form-group pb-3">
-        <label asp-for="TitleGoal"></label>
+            <label asp-for="TitleGoal" class="text-label"></label>
         <input asp-for="TitleGoal" class="form-control">
         <span class="form-text text-danger" asp-validation-for="TitleGoal"></span>
     </div>
  
 
     <div class="form-group pb-3">
-        <label asp-for="TargetAmount"></label>
+            <label asp-for="TargetAmount" class="text-label"></label>
         <input asp-for="TargetAmount" class="form-control">
         <span class="form-text text-danger" asp-validation-for="TargetAmount"></span>
     </div>
 
     <button type="submit" class="btn btn-success">Submit</button>
-    <a type="button" class="btn btn-outline-info" asp-action="Index">Back To List</a>
+        <a type="button" class="btn btn-outline-primary" asp-action="Index">Back To List</a>
 
 </form>
 
-  
+  </div>
