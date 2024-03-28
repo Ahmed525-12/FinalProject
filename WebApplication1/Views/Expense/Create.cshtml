@@ -19,7 +19,7 @@
         <span class="form-text text-danger" asp-validation-for="Priority"></span>
 
     </div>
- 
+        <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group pb-3">
             <label asp-for="AmountMoney" class="text-label"></label>
         <input asp-for="AmountMoney" class="form-control">
@@ -27,7 +27,7 @@
     </div>
   
     <button type="submit" class="btn btn-success">Submit</button>
-        <a type="button" class="btn btn-outline-primary" asp-action="Index">Back To List</a>
+        <a type="button" class="btn btn-outline-warning" asp-action="Index">Back To List</a>
 
 </form>
   </div>

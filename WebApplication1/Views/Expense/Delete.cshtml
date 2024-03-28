@@ -28,9 +28,9 @@
         <input asp-for="AmountMoney" class="form-control " readonly>
         <span class="form-text text-danger" asp-validation-for="AmountMoney"></span>
     </div>
-
+        <div asp-validation-summary="All" class="text-danger"></div>
     <button type="submit" class="btn btn-danger">Submit Delete </button>
-        <a type="button" class="btn btn-outline-primary" asp-action="Index">Back To List</a>
+        <a type="button" class="btn btn-outline-warning" asp-action="Index">Back To List</a>
 
 </form>
 

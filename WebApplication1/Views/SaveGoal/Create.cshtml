@@ -7,7 +7,7 @@
 
     <div class="padding-fixed container">
 
-<form asp-action="Createe" enctype="multipart/form-data">
+    <form asp-action="Createe" enctype="multipart/form-data">
     <div class="form-group pb-3">
             <label asp-for="TitleGoal" class="text-label"></label>
         <input asp-for="TitleGoal" class="form-control">
@@ -20,9 +20,9 @@
         <input asp-for="TargetAmount" class="form-control">
         <span class="form-text text-danger" asp-validation-for="TargetAmount"></span>
     </div>
-
+        <div asp-validation-summary="All" class="text-danger"></div>
     <button type="submit" class="btn btn-success">Submit</button>
-        <a type="button" class="btn btn-outline-primary" asp-action="Index">Back To List</a>
+        <a type="button" class="btn btn-outline-warning" asp-action="Index">Back To List</a>
 
 </form>
 
