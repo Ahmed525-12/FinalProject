@@ -8,8 +8,8 @@
 
     <div class="padding-fixed container">
 <form asp-action="AddMonthlySalary" enctype="multipart/form-data">
-    <div class="form-group">
-        <label asp-for="MonthlySalary"></label>
+        <div class="form-group pb-3">
+            <label asp-for="MonthlySalary" class="text-label pb-3"></label>
         <input asp-for="MonthlySalary" class="form-control">
         <span class="form-text text-danger" asp-validation-for="MonthlySalary"></span>
     </div>
