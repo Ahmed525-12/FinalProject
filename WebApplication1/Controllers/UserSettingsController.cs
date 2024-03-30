@@ -29,11 +29,19 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public async Task<IActionResult> AddMonthlySalary(UserSettingsVM model)
         {
-            var userEmail = User.FindFirstValue(ClaimTypes.Email);
-            var user = await _userManager.FindByEmailAsync(userEmail);
-            user.MonthlySalary = model.MonthlySalary;
-            await _userManager.UpdateAsync(user);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                var userEmail = User.FindFirstValue(ClaimTypes.Email);
+                var user = await _userManager.FindByEmailAsync(userEmail);
+                user.MonthlySalary = model.MonthlySalary;
+                await _userManager.UpdateAsync(user);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                // If model state is not valid, return the view with validation errors
+                return View(model);
+            }
         }
 
         public IActionResult AddDayOfEndMonth()
@@ -44,11 +52,19 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public async Task<IActionResult> AddDayOfEndMonth(UserSettingsVM model)
         {
-            var userEmail = User.FindFirstValue(ClaimTypes.Email);
-            var user = await _userManager.FindByEmailAsync(userEmail);
-            user.DayOfEndMonth = model.DayOfEndMonth;
-            await _userManager.UpdateAsync(user);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                var userEmail = User.FindFirstValue(ClaimTypes.Email);
+                var user = await _userManager.FindByEmailAsync(userEmail);
+                user.DayOfEndMonth = model.DayOfEndMonth;
+                await _userManager.UpdateAsync(user);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                // If model state is not valid, return the view with validation errors
+                return View(model);
+            }
         }
     }
 }

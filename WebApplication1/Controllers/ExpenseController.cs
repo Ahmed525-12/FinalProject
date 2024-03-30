@@ -62,32 +62,40 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public async Task<IActionResult> Createe(ExpenseVM model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                var userEmail = User.FindFirstValue(ClaimTypes.Email);
-                var user = await _userManager.FindByEmailAsync(userEmail);
-                var checkMonth = new MonthOfExpenseSpecfNum(DateTime.Today.Month, user.Id);
-                var checkMonthOfExpense = await _unitOfWork.Repository<MonthOfExpense>().GetAllWithSpecAsync(checkMonth);
-                var expense = new Expense()
+                try
                 {
-                    Title = model.Title,
-                    AmountMoney = model.AmountMoney,
-                    Priority = model.Priority,
-                    UserId = user.Id,
-                    ExpenseDate = DateTime.Now,
-                    MonthOfExpenseId = checkMonthOfExpense.FirstOrDefault().Id
-                };
-                await _unitOfWork.Repository<Expense>().AddAsync(expense);
-                var month = await _unitOfWork.Repository<MonthOfExpense>().GetbyIdAsync(expense.MonthOfExpenseId);
-                month.TotalAmountMoney = month.TotalAmountMoney + model.AmountMoney;
-                _unitOfWork.Repository<MonthOfExpense>().Update(month);
+                    var userEmail = User.FindFirstValue(ClaimTypes.Email);
+                    var user = await _userManager.FindByEmailAsync(userEmail);
+                    var checkMonth = new MonthOfExpenseSpecfNum(DateTime.Today.Month, user.Id);
+                    var checkMonthOfExpense = await _unitOfWork.Repository<MonthOfExpense>().GetAllWithSpecAsync(checkMonth);
+                    var expense = new Expense()
+                    {
+                        Title = model.Title,
+                        AmountMoney = model.AmountMoney,
+                        Priority = model.Priority,
+                        UserId = user.Id,
+                        ExpenseDate = DateTime.Now,
+                        MonthOfExpenseId = checkMonthOfExpense.FirstOrDefault().Id
+                    };
+                    await _unitOfWork.Repository<Expense>().AddAsync(expense);
+                    var month = await _unitOfWork.Repository<MonthOfExpense>().GetbyIdAsync(expense.MonthOfExpenseId);
+                    month.TotalAmountMoney = month.TotalAmountMoney + model.AmountMoney;
+                    _unitOfWork.Repository<MonthOfExpense>().Update(month);
 
-                await _unitOfWork.CompleteAsync();
-                return RedirectToAction("Index");
+                    await _unitOfWork.CompleteAsync();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    return View("Create", model);
+                }
             }
-            catch (Exception)
+            else
             {
-                return View(model);
+                // If model state is not valid, return the view with validation errors
+                return View("Create", model);
             }
         }
 
@@ -104,15 +112,23 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(ExpenseVM model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                var mappedResults = _mapper.Map<Expense>(model);
-                _unitOfWork.Repository<Expense>().Update(mappedResults);
-                await _unitOfWork.CompleteAsync();
-                return RedirectToAction("Index");
+                try
+                {
+                    var mappedResults = _mapper.Map<Expense>(model);
+                    _unitOfWork.Repository<Expense>().Update(mappedResults);
+                    await _unitOfWork.CompleteAsync();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    return View(model);
+                }
             }
-            catch (Exception)
+            else
             {
+                // If model state is not valid, return the view with validation errors
                 return View(model);
             }
         }
@@ -130,15 +146,23 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(ExpenseVM model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                var mappedResults = _mapper.Map<Expense>(model);
-                _unitOfWork.Repository<Expense>().DeleteAsync(mappedResults);
-                await _unitOfWork.CompleteAsync();
-                return RedirectToAction("Index");
+                try
+                {
+                    var mappedResults = _mapper.Map<Expense>(model);
+                    _unitOfWork.Repository<Expense>().DeleteAsync(mappedResults);
+                    await _unitOfWork.CompleteAsync();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    return View(model);
+                }
             }
-            catch (Exception)
+            else
             {
+                // If model state is not valid, return the view with validation errors
                 return View(model);
             }
         }

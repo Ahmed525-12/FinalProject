@@ -45,23 +45,31 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public async Task<IActionResult> Createe(SaveGoalVM model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                var userEmail = User.FindFirstValue(ClaimTypes.Email);
-                var user = await _userManager.FindByEmailAsync(userEmail);
-                var saveGoal = new SaveGoal()
+                try
                 {
-                    TargetAmount = model.TargetAmount,
-                    TitleGoal = model.TitleGoal,
-                    User_Id = user.Id
-                };
-                await _unitOfWork.Repository<SaveGoal>().AddAsync(saveGoal);
-                await _unitOfWork.CompleteAsync();
-                return RedirectToAction("Index");
+                    var userEmail = User.FindFirstValue(ClaimTypes.Email);
+                    var user = await _userManager.FindByEmailAsync(userEmail);
+                    var saveGoal = new SaveGoal()
+                    {
+                        TargetAmount = model.TargetAmount,
+                        TitleGoal = model.TitleGoal,
+                        User_Id = user.Id
+                    };
+                    await _unitOfWork.Repository<SaveGoal>().AddAsync(saveGoal);
+                    await _unitOfWork.CompleteAsync();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    return View(model);
+                }
             }
-            catch (Exception)
+            else
             {
-                return View(model);
+                // If model state is not valid, return the view with validation errors
+                return View("Create", model);
             }
         }
 
@@ -78,15 +86,23 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(SaveGoalVM model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                var mappedResults = _mapper.Map<SaveGoal>(model);
-                _unitOfWork.Repository<SaveGoal>().Update(mappedResults);
-                await _unitOfWork.CompleteAsync();
-                return RedirectToAction("Index");
+                try
+                {
+                    var mappedResults = _mapper.Map<SaveGoal>(model);
+                    _unitOfWork.Repository<SaveGoal>().Update(mappedResults);
+                    await _unitOfWork.CompleteAsync();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    return View(model);
+                }
             }
-            catch (Exception)
+            else
             {
+                // If model state is not valid, return the view with validation errors
                 return View(model);
             }
         }
@@ -104,15 +120,23 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(SaveGoalVM model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                var mappedResults = _mapper.Map<SaveGoal>(model);
-                _unitOfWork.Repository<SaveGoal>().DeleteAsync(mappedResults);
-                await _unitOfWork.CompleteAsync();
-                return RedirectToAction("Index");
+                try
+                {
+                    var mappedResults = _mapper.Map<SaveGoal>(model);
+                    _unitOfWork.Repository<SaveGoal>().DeleteAsync(mappedResults);
+                    await _unitOfWork.CompleteAsync();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+                    return View(model);
+                }
             }
-            catch (Exception)
+            else
             {
+                // If model state is not valid, return the view with validation errors
                 return View(model);
             }
         }
