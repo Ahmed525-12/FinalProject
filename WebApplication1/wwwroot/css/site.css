@@ -89,37 +89,36 @@ body {
     }
 
     .img-nav {
-        height: auto !important;
         width: width: 14% !important;
     }
 
     .text-goal {
-        font-size: medium;
+        font-size: 13px !important;
         color: white;
         text-shadow: 1px 1px 1px #000;
     }
 
     .text-label {
-        font-size: medium;
+        font-size: 13px !important;
         color: white;
         text-shadow: 1px 1px 1px #000;
     }
 
     .icon-color-sm {
-        font-size: medium;
+        font-size: 13px !important;
         color: darkblue;
     }
 
     .text-color {
-        font-size: medium;
-        color: white;
+        font-size: 13px !important;
+        color: #FFDD00;
         text-align: center;
     }
 
     .head-auth {
-        color: #4CCD99;
+        color: #FFDD00;
         text-shadow: 1px 1px 1px #000;
-        font-size: medium;
+        font-size: 12px;
         text-align: center;
     }
 }
