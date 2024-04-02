@@ -2,7 +2,7 @@
 @model CombinedHomeScreen
 @{
     ViewData["Title"] = "Home Page";
-    bool dataFound = Model.UserVM != null && Model.UserVM.TotalExpense.HasValue && Model.SaveGoalVM != null && Model.SaveGoalVM.Any() && Model.MonthOfExpenseVM.Any();
+    bool dataFound = Model.UserVM != null ||Model.UserVM.TotalExpense.HasValue || Model.SaveGoalVM != null || Model.SaveGoalVM.Any() || Model.MonthOfExpenseVM.Any();
 
 }
 
