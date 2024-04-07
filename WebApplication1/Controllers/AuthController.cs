@@ -90,7 +90,6 @@ namespace WebApplication1.Controllers
                     claim.Value
                 }).ToList();
             var CheckUser = await _userManager.FindByEmailAsync(clamis.ElementAt(4).Value);
-            await _signInManager.SignInAsync(CheckUser, true, "Google");
 
             if (CheckUser == null)
             {
@@ -101,10 +100,15 @@ namespace WebApplication1.Controllers
                     DisplayName = clamis.ElementAt(4).Value.Split("@")[0],
                 };
                 var createuser = await _userManager.CreateAsync(User);
+                CheckUser = User;
                 await _signInManager.SignInAsync(User, true, "Google");
+                return RedirectToAction("Index", "Home");
             }
-
-            return RedirectToAction("Index", "Home");
+            else
+            {
+                await _signInManager.SignInAsync(CheckUser, true, "Google");
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         [HttpPost]
