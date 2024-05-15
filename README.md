@@ -9,7 +9,7 @@ This project is a user-friendly financial management app developed on the .NET f
 - **Secure Data Storage**: Microsoft SQL Server is integrated for secure data storage, ensuring user data privacy and reliability.
 - **External Google Login**: Users can sign in to the app using their Google accounts, providing convenience and security.
 - **Caching**: Caching mechanisms are implemented to optimize performance and reduce database load, enhancing user experience.
-
+- **the assistant**: That Allows to User to have ChatGPT to help him to give him advice about saving money and plans ETC.
 ## Technologies Used
 - ASP.NET MVC
 - Microsoft SQL Server (MSS)
